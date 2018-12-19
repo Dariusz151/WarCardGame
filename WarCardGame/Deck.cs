@@ -27,7 +27,7 @@ namespace WarCardGame
 
             foreach (Suit suit in Enum.GetValues(typeof(Suit)))
             {
-                for (int value = 2; value < 16; value++)
+                for (int value = 2; value < 15; value++)
                 {
                     Card card = new Card(value, suit);
                     _deck.Push(card);

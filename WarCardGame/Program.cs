@@ -6,22 +6,39 @@ namespace WarCardGame
     {
         static void Main(string[] args)
         {
-            Card card;
+            Card myCard, computerCard;
+
             Deck deck = new Deck();
             deck.BuildDeck();
 
-            deck.Shuffle();
+            myCard = deck.DealCard();
+            Console.WriteLine("Your card:");
+            Console.WriteLine(myCard);
 
-            card = deck.DealCard();
-            Console.WriteLine(card);
-            card = deck.DealCard();
-            Console.WriteLine(card);
-            card = deck.DealCard();
-            Console.WriteLine(card);
-            card = deck.DealCard();
-            Console.WriteLine(card);
+            computerCard = deck.DealCard();
+            Console.WriteLine("\nComputer's card:");
+            Console.WriteLine(computerCard);
+
+            var result = Program.CheckResult(myCard, computerCard);
+            Console.WriteLine($"\nResult: {result}");
 
             Console.ReadKey();
+        }
+
+        private static string CheckResult(Card firstCard, Card secondCard)
+        {
+            string result = "";
+            
+            if (firstCard.Value > secondCard.Value)
+            {
+                result = $"First Card ({firstCard}) won.";
+            }
+            else
+            {
+                result = $"Second Card ({secondCard}) won.";
+            }
+
+            return result;
         }
     }
 }
