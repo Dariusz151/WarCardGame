@@ -11,8 +11,8 @@ namespace WarCardGame
 
         public Card(int value, Suit suit)
         {
-            this.Suit = suit;
-            this.Value = value;
+            Suit = suit;
+            Value = value;
         }
     }
 }
