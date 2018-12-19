@@ -9,9 +9,41 @@ namespace WarCardGame
     /// </summary>
     public class Card
     {
-        public int Value { get; set; }
+        private Dictionary<int, Figures> _figureMap = new Dictionary<int, Figures>()
+        {
+            { 11, Figures.Jack },
+            { 12, Figures.Queen },
+            { 13, Figures.King },
+            { 14, Figures.Ace }
+        };
+
+        private Figures _fValue;
+        private int _value;
         public Suit Suit { get; set; }
 
+        public dynamic Value
+        {
+            get
+            {
+                if (_value != 0)
+                    return _value;
+                else
+                    return _fValue;
+            }
+            set
+            {
+                if (value > 10)
+                {
+                    _fValue = _figureMap[value];
+                    _value = 0;
+                }
+                else
+                {
+                    _value = value;
+                }
+            }
+        }
+        
         public Card(int value, Suit suit)
         {
             Suit = suit;
@@ -20,7 +52,7 @@ namespace WarCardGame
 
         public override string ToString()
         {
-            return $"Card: {this.Value} Suit: {this.Suit.ToString()}.";
+            return $"Card: {this.Value.ToString()} Suit: {this.Suit.ToString()}.";
         }
     }
 }

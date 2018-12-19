@@ -52,7 +52,4 @@ namespace WarCardGame
             return _deck.Pop();
         }
     }
-
-    
-
 }
